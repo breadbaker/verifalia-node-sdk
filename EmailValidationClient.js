@@ -11,7 +11,7 @@ EmailValidationClient.prototype.VALIDATION_STATUS_COMPLETED = 'completed';
 EmailValidationClient.prototype.submit = function(emailAddresses, options) {
 	var callback = options instanceof Function
 		? options
-		: (options && options.callback) || ()=>{};
+		: (options && options.callback) || function ();
 		
 	var completionOptions = (options && options.waitForCompletion);
 	
@@ -136,7 +136,7 @@ var queryUntilDone = function($this, uniqueID, completionOptions, callback) {
 EmailValidationClient.prototype.query = function(uniqueID, options) {
 	var callback = options instanceof Function
 		? options
-		: (options && options.callback) || ()=>{};
+		: (options && options.callback) || function ();
 		
 	var completionOptions = (options && options.waitForCompletion);
 
@@ -151,7 +151,7 @@ EmailValidationClient.prototype.query = function(uniqueID, options) {
 EmailValidationClient.prototype.delete = function(uniqueID, options) {
 	var callback = options instanceof Function
 		? options
-		: (options && options.callback) || ()=>{};
+		: (options && options.callback) || function ();
 
 	request({
 			url: this.restClient.baseUrl + this.restClient.apiVersion + '/email-validations/' + uniqueID,
